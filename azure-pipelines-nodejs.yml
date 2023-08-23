@@ -51,6 +51,6 @@ steps:
     command: publish
     publishDirectory: '$(Build.ArtifactStagingDirectory)'
     vstsFeedPublish: 'artifact-crete/test-artifact'
-    vstsFeedPackagePublish: 'artifact-$(major).$(minor).$(brpatch)'
+    vstsFeedPackagePublish: 'artifact'
     versionOption: minor
     versionPublish: '1.0.0'
