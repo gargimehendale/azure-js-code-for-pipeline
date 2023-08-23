@@ -29,9 +29,8 @@ steps:
     targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy project files'
 
-- task: PublishPipelineArtifact@1
+- task: PublishBuildArtifacts@1
   inputs:
     artifactName: artifact1
-    targetPath: '$(Build.ArtifactStagingDirectory)'
-    publishLocation: 'pipeline'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Publish npm artifact'
