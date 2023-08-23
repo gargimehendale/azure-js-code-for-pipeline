@@ -41,18 +41,19 @@ steps:
 #    archiveType: 'zip'
 #    archiveFile: '$(Build.ArtifactStagingDirectory)/deploy.zip'
 #    replaceExistingArchive: true
+- task: PublishBuildArtifacts@1
+  inputs:
+     artifactName: artifact-$(major).$(minor).$(brpatch)
+     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Publish npm artifact'
 - task: UniversalPackages@0
   displayName: Publish a Universal Package
   inputs:
     command: publish
     publishDirectory: '$(Build.ArtifactStagingDirectory)'
     vstsFeedPublish: 'artifact-crete/test-artifact'
-    vstsFeedPackagePublish: 'test-artifact-package'
-- task: PublishBuildArtifacts@1
-  inputs:
-     artifactName: artifact-$(major).$(minor).$(brpatch)
-     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Publish npm artifact'
+    vstsFeedPackagePublish: 'artifact-$(major).$(minor).$(brpatch)'
+
 
 
 #- task: DownloadBuildArtifacts@0
