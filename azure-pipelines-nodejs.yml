@@ -34,33 +34,40 @@ steps:
     targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy project files'
 
-- task: ArchiveFiles@2
+- task: PublishBuildArtifacts@1
   inputs:
-    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/deploy.zip'
-    replaceExistingArchive: true
+     artifactName: artifact1$(major).$(minor).$(brpatch).zip
+     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Publish npm artifact'
 
-- task: DownloadBuildArtifacts@0
+#- task: ArchiveFiles@2
+#  inputs:
+#    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+#    includeRootFolder: false
+#    archiveType: 'zip'
+#    archiveFile: '$(Build.ArtifactStagingDirectory)/deploy.zip'
+#    replaceExistingArchive: true
+
+#- task: DownloadBuildArtifacts@0
+#  inputs:
+#    buildType: 'current'
+#    downloadType: 'single'
+#    artifactName: 'deploy.zip'
+#    downloadPath: '$(System.ArtifactsDirectory)'
+#- task: Npm@1
+#  inputs:
+#    command: publish
+#    publishRegistry: useFeed
+#    publishFeed: artifactcreated
+
+- task: PublishBuildArtifacts@1
   inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'deploy.zip'
-    downloadPath: '$(System.ArtifactsDirectory)'
-- task: Npm@1
-  inputs:
-    command: publish
-    publishRegistry: useFeed
-    publishFeed: artifactcreated
-# - task: PublishBuildArtifacts@1 $(major).$(minor).$(brpatch)
-#   inputs:
-#     artifactName: artifact1
-#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#   displayName: 'Publish npm artifact'
+     artifactName: artifact1$(major).$(minor).$(brpatch)
+     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Publish npm artifact'
 
 #- task: PublishBuildArtifacts@1
 #    displayName: 'Publish Artifact'
 #    inputs:
-#      PathtoPublish: '$(build.artifactstagingdirectory)/CloudDemo.Mvc.zip'
+#      PathtoPublish: '$(build.artifactstagingdirectory)/'
 #      ArtifactName: '$(ArtifactName)'
