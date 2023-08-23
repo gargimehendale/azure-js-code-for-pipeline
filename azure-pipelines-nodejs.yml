@@ -39,5 +39,5 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     artifactName: artifact1
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/feed.zip'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Publish npm artifact'
