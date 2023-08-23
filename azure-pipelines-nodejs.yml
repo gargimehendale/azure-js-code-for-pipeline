@@ -29,6 +29,13 @@ steps:
     targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy project files'
 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactsStagingDirectory)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactsStagingDirectory)/deploy.zip'
+    replaceExistingArchive: false
 - task: PublishBuildArtifacts@1
   inputs:
     artifactName: artifact1
