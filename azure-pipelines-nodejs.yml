@@ -8,7 +8,7 @@ trigger:
 
 variables:
   major: 1
-  minor: 1
+  minor: 0
   brpatch: $[counter(variables['major.minor'], 0)]
 
 pool:
@@ -33,19 +33,11 @@ steps:
        public/*
     targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy project files'
-
-# - task: ArchiveFiles@2
-#   inputs:
-#    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-#    includeRootFolder: false
-#    archiveType: 'zip'
-#    archiveFile: '$(Build.ArtifactStagingDirectory)/deploy.zip'
-#    replaceExistingArchive: true
-- task: PublishBuildArtifacts@1
-  inputs:
-     artifactName: artifact-$(major).$(minor).$(brpatch)
-     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Publish npm artifact'
+#- task: PublishBuildArtifacts@1
+#  inputs:
+#     artifactName: artifact-$(major).$(minor).$(brpatch)
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#  displayName: 'Publish npm artifact'
 - task: UniversalPackages@0
   displayName: Publish a Universal Package
   inputs:
@@ -53,29 +45,5 @@ steps:
     publishDirectory: '$(Build.ArtifactStagingDirectory)'
     vstsFeedPublish: 'artifact-crete/test-artifact'
     vstsFeedPackagePublish: 'artifact-$(major).$(minor).$(brpatch)'
-
-
-
-#- task: DownloadBuildArtifacts@0
-#  inputs:
-#    buildType: 'current'
-#    downloadType: 'single'
-#    artifactName: 'deploy.zip'
-#    downloadPath: '$(System.ArtifactsDirectory)'
-#- task: Npm@1
-#  inputs:
-#    command: publish
-#    publishRegistry: useFeed
-#    publishFeed: artifactcreated
-
-# - task: PublishBuildArtifacts@1
-#   inputs:
-#      artifactName: artifact1$(major).$(minor).$(brpatch)
-#      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#   displayName: 'Publish npm artifact'
-
-#- task: PublishBuildArtifacts@1
-#    displayName: 'Publish Artifact'
-#    inputs:
-#      PathtoPublish: '$(build.artifactstagingdirectory)/'
-#      ArtifactName: '$(ArtifactName)'
+    versionOption: custom
+    versionPublish: '$(major).$(minor).$(brpatch)'
