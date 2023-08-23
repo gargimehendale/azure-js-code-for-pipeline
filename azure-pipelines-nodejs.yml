@@ -31,13 +31,19 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.ArtifactsStagingDirectory)'
-    includeRootFolder: true
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+    includeRootFolder: false
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactsStagingDirectory)/deploy.zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/deploy.zip'
     replaceExistingArchive: false
 - task: PublishBuildArtifacts@1
   inputs:
     artifactName: artifact1
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Publish npm artifact'
+
+#- task: PublishBuildArtifacts@1
+#    displayName: 'Publish Artifact'
+#    inputs:
+#      PathtoPublish: '$(build.artifactstagingdirectory)/CloudDemo.Mvc.zip'
+#      ArtifactName: '$(ArtifactName)'
