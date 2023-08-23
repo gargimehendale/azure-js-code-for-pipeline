@@ -46,7 +46,7 @@ steps:
   inputs:
     buildType: 'current'
     downloadType: 'single'
-    artifactName: '$(Build.ArtifactStagingDirectory)/deploy.zip'
+    artifactName: 'deploy.zip'
     downloadPath: '$(System.ArtifactsDirectory)'
     
 # - task: PublishBuildArtifacts@1 $(major).$(minor).$(brpatch)
