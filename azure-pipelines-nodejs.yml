@@ -39,10 +39,10 @@ steps:
     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
     includeRootFolder: false
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/deploy$(major).$(minor).$(brpatch).zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/deploy.zip'
     replaceExistingArchive: true
     
-# - task: PublishBuildArtifacts@1
+# - task: PublishBuildArtifacts@1 $(major).$(minor).$(brpatch)
 #   inputs:
 #     artifactName: artifact1
 #     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
