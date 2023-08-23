@@ -32,6 +32,14 @@ steps:
        src/*
     targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy project files'
+# - task: ArchiveFiles@2
+#   inputs:
+#    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+#    includeRootFolder: false
+#    archiveType: 'zip'
+#    archiveFile: '$(Build.ArtifactStagingDirectory)/deploy.zip'
+#    replaceExistingArchive: true
+
 #- task: PublishBuildArtifacts@1
 #  inputs:
 #     artifactName: artifact$(major).$(minor).$(brpatch)
@@ -44,5 +52,5 @@ steps:
     publishDirectory: '$(Build.ArtifactStagingDirectory)'
     vstsFeedPublish: 'artifact-crete/test-artifact'
     vstsFeedPackagePublish: 'artifact-$(major).$(minor).$(brpatch)'
-    versionOption: custom
-    versionPublish: '$(major).$(minor).$(brpatch)'
+    versionOption: minor
+    versionPublish: '1.0.0'
