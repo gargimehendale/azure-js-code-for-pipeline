@@ -23,9 +23,13 @@ steps:
 - script: |
     npm install
     npm run build
-    echo "##vso[build.updatebuildnumber]$(major).$(minor)-$(Build.SourceBranchName).$(brpatch)"
   displayName: 'npm install and build'
 
+- script: |
+    echo "first echo"
+    echo "##vso[build.updatebuildnumber]$(major).$(minor)-$(Build.SourceBranchName).$(brpatch)"
+    echo " second echo without ##vso"
+    echo "[build.updatebuildnumber]$(major).$(minor)-$(Build.SourceBranchName).$(brpatch)"
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
