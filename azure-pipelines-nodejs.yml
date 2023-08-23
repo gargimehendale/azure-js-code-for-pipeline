@@ -9,7 +9,7 @@ trigger:
 variables:
   major: 1
   minor: 1
-  brpatch: $[counter(variables['build.sourcebranchname'], 0)]
+  brpatch: $[counter(variables['major.minor'], 0)]
 
 pool:
   vmImage: ubuntu-latest
