@@ -34,7 +34,7 @@ steps:
   displayName: 'Copy project files'
 #- task: PublishBuildArtifacts@1
 #  inputs:
-#     artifactName: artifact-$(major).$(minor).$(brpatch)
+#     artifactName: artifact$(major).$(minor).$(brpatch)
 #     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
 #  displayName: 'Publish npm artifact'
 - task: UniversalPackages@0
