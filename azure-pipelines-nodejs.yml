@@ -30,7 +30,6 @@ steps:
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: |
        src/*
-       public/*
     targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy project files'
 #- task: PublishBuildArtifacts@1
