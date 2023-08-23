@@ -34,19 +34,19 @@ steps:
     targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy project files'
 
+- task: ArchiveFiles@2
+  inputs:
+   rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+   includeRootFolder: false
+   archiveType: 'zip'
+   archiveFile: '$(Build.ArtifactStagingDirectory)/deploy.zip'
+   replaceExistingArchive: true
 - task: PublishBuildArtifacts@1
   inputs:
-     artifactName: artifact1$(major).$(minor).$(brpatch).zip
+     artifactName: artifact1$(major).$(minor).$(brpatch)
      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Publish npm artifact'
 
-#- task: ArchiveFiles@2
-#  inputs:
-#    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-#    includeRootFolder: false
-#    archiveType: 'zip'
-#    archiveFile: '$(Build.ArtifactStagingDirectory)/deploy.zip'
-#    replaceExistingArchive: true
 
 #- task: DownloadBuildArtifacts@0
 #  inputs:
@@ -60,11 +60,11 @@ steps:
 #    publishRegistry: useFeed
 #    publishFeed: artifactcreated
 
-- task: PublishBuildArtifacts@1
-  inputs:
-     artifactName: artifact1$(major).$(minor).$(brpatch)
-     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Publish npm artifact'
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#      artifactName: artifact1$(major).$(minor).$(brpatch)
+#      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#   displayName: 'Publish npm artifact'
 
 #- task: PublishBuildArtifacts@1
 #    displayName: 'Publish Artifact'
