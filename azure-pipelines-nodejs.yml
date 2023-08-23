@@ -23,6 +23,7 @@ steps:
 - script: |
     npm install
     npm run build
+    npm publish
   displayName: 'npm install and build'
 
 - task: CopyFiles@2
