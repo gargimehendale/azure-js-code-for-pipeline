@@ -32,7 +32,7 @@ steps:
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.ArtifactsStagingDirectory)'
-    includeRootFolder: false
+    includeRootFolder: true
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactsStagingDirectory)/deploy.zip'
     replaceExistingArchive: false
