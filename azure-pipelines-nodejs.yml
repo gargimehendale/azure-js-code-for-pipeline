@@ -48,7 +48,11 @@ steps:
     downloadType: 'single'
     artifactName: 'deploy.zip'
     downloadPath: '$(System.ArtifactsDirectory)'
-    
+- task: Npm@1
+  inputs:
+    command: publish
+    publishRegistry: useFeed
+    publishFeed: artifactcreated
 # - task: PublishBuildArtifacts@1 $(major).$(minor).$(brpatch)
 #   inputs:
 #     artifactName: artifact1
