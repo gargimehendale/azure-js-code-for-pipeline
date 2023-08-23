@@ -27,9 +27,7 @@ steps:
 
 - script: |
     echo "first echo"
-    echo "##vso[build.updatebuildnumber]$(major).$(minor)-$(Build.SourceBranchName).$(brpatch)"
-    echo " second echo without ##vso"
-    echo "[build.updatebuildnumber]$(major).$(minor)-$(Build.SourceBranchName).$(brpatch)"
+    echo "##vso[build.updatebuildnumber]$(major).$(minor).$(brpatch)"
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
@@ -46,6 +44,7 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/deploy$(major).$(minor).$(brpatch).zip'
     replaceExistingArchive: false
+    
 # - task: PublishBuildArtifacts@1
 #   inputs:
 #     artifactName: artifact1
