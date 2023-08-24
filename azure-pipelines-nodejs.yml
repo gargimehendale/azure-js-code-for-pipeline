@@ -30,21 +30,29 @@ steps:
     echo "List of directory: $(ls -larth)"
     echo "build sources directory: $(Build.SourcesDirectory)"
     echo "Artifacts staging file: $(Build.ArtifactStagingDirectory)"
-- task: CopyFiles@2
-  inputs:
-    sourceFolder: '$(Build.SourcesDirectory)'
-    contents: |
-      src/*
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Copy project files'
+# - task: CopyFiles@2
+#   inputs:
+#     sourceFolder: '$(Build.SourcesDirectory)'
+#     contents: |
+#       src/*
+#     targetFolder: '$(Build.ArtifactStagingDirectory)/tar'
+#   displayName: 'Copy project files'
 
 - task: ArchiveFiles@2
   inputs:
-   rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+   rootFolderOrFile: '$(Build.SourcesDirectory)/src'
    includeRootFolder: false
    archiveType: 'zip'
    archiveFile: 'new'
    replaceExistingArchive: true
+
+# - task: ArchiveFiles@2
+#   inputs:
+#    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+#    includeRootFolder: false
+#    archiveType: 'zip'
+#    archiveFile: 'new'
+#    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   inputs:
@@ -59,4 +67,4 @@ steps:
     vstsFeedPackagePublish: 'new'
     versionOption: custom
     versionPublish: '$(major).$(minor).$(brpatch)'
-    publishDirectory: '$(Build.ArtifactStagingDirectory)/new.zip'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)/'
