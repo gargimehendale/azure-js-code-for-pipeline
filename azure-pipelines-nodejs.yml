@@ -32,7 +32,7 @@ steps:
    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
    includeRootFolder: false
    archiveType: 'zip'
-   archiveFile: '$(Build.ArtifactStagingDirectory)/tar/new'
+   archiveFile: '$(Build.ArtifactStagingDirectory)/zip/new'
    replaceExistingArchive: true
 
 # - task: PublishBuildArtifacts@1
@@ -48,4 +48,4 @@ steps:
     vstsFeedPackagePublish: 'new'
     versionOption: custom
     versionPublish: '$(major).$(minor).$(brpatch)'
-    publishDirectory: '$(Build.ArtifactStagingDirectory)/tar'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)/zip'
