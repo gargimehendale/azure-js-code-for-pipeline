@@ -40,17 +40,17 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-   rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/src'
+   rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
    includeRootFolder: false
    archiveType: 'zip'
    archiveFile: 'new'
    replaceExistingArchive: true
 
-# - task: PublishBuildArtifacts@1
-#   inputs:
-#     artifactName: newartifact
-#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#   displayName: 'Publish npm artifact'
+- task: PublishBuildArtifacts@1
+  inputs:
+    artifactName: newartifact
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Publish npm artifact'
 - task: UniversalPackages@0
   displayName: Publish a Universal Package
   inputs:
@@ -59,4 +59,4 @@ steps:
     vstsFeedPackagePublish: 'new'
     versionOption: custom
     versionPublish: '$(major).$(minor).$(brpatch)'
-    publishDirectory: '$(Build.ArtifactStagingDirectory)'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)/new.zip'
