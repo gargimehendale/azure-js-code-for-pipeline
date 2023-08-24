@@ -24,12 +24,6 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
-
-- script: |
-    echo "Working directory : $(pwd)"
-    echo "List of directory: $(ls -larth)"
-    echo "build sources directory: $(Build.SourcesDirectory)"
-    echo "Artifacts staging file: $(Build.ArtifactStagingDirectory)"
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
@@ -40,7 +34,7 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-   rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/src'
+   rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
    includeRootFolder: false
    archiveType: 'zip'
    archiveFile: '$(Build.ArtifactStagingDirectory)/tar/new'
@@ -67,4 +61,4 @@ steps:
     vstsFeedPackagePublish: 'new'
     versionOption: custom
     versionPublish: '$(major).$(minor).$(brpatch)'
-    publishDirectory: '$(Build.ArtifactStagingDirectory)'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)/tar'
