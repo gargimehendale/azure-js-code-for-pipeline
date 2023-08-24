@@ -37,13 +37,13 @@ steps:
       ./src/*
     targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy project files'
-- task: ArchiveFiles@2
-  inputs:
-   rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-   includeRootFolder: false
-   archiveType: 'zip'
-   archiveFile: '$(Build.ArtifactStagingDirectory)/artifact.zip'
-   replaceExistingArchive: true
+# - task: ArchiveFiles@2
+#   inputs:
+#    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+#    includeRootFolder: false
+#    archiveType: 'zip'
+#    archiveFile: '$(Build.ArtifactStagingDirectory)/artifact.zip'
+#    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   inputs:
@@ -58,4 +58,4 @@ steps:
     vstsFeedPackagePublish: 'artifact'
     versionOption: custom
     versionPublish: '$(major).$(minor).$(brpatch)'
-    #publishDirectory: '$(Build.ArtifactStagingDirectory)'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)/artifact'
