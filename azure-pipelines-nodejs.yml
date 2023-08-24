@@ -34,7 +34,8 @@ steps:
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: |
-      ./src/*
+      src/*
+      public/*
     targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy project files'
 
@@ -43,7 +44,7 @@ steps:
    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
    includeRootFolder: false
    archiveType: 'zip'
-   archiveFile: '$(Build.ArtifactStagingDirectory)/artifact'
+   archiveFile: '$(Build.ArtifactStagingDirectory)/new'
    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
