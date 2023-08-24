@@ -19,20 +19,20 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
-- task: CopyFiles@2
-  inputs:
-    sourceFolder: '$(Build.SourcesDirectory)'
-    contents: |
-      src/*
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Copy project files'
+# - task: CopyFiles@2
+#   inputs:
+#     sourceFolder: '$(Build.SourcesDirectory)'
+#     contents: |
+#       src/*
+#     targetFolder: '$(Build.ArtifactStagingDirectory)'
+#   displayName: 'Copy project files'
 
 - task: ArchiveFiles@2
   inputs:
-   rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+   rootFolderOrFile: '$(Build.SourcesDirectory)/src'
    includeRootFolder: false
    archiveType: 'zip'
-   archiveFile: '$(Build.ArtifactStagingDirectory)/zip/new'
+   archiveFile: '$(Build.ArtifactStagingDirectory)/test'
    replaceExistingArchive: true
 
 # - task: PublishBuildArtifacts@1
@@ -48,4 +48,4 @@ steps:
     vstsFeedPackagePublish: 'new'
     versionOption: custom
     versionPublish: '$(major).$(minor).$(brpatch)'
-    publishDirectory: '$(Build.ArtifactStagingDirectory)/zip'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)/'
