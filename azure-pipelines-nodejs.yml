@@ -58,4 +58,4 @@ steps:
     vstsFeedPackagePublish: 'artifact'
     versionOption: custom
     versionPublish: '$(major).$(minor).$(brpatch)'
-    publishDirectory: '$(Build.ArtifactStagingDirectory)/artifact'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)'
