@@ -39,19 +39,19 @@ steps:
     targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy project files'
 
-- task: ArchiveFiles@2
-  inputs:
-   rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-   includeRootFolder: false
-   archiveType: 'zip'
-   archiveFile: '$(Build.ArtifactStagingDirectory)/new'
-   replaceExistingArchive: true
-
-# - task: PublishBuildArtifacts@1
+# - task: ArchiveFiles@2
 #   inputs:
-#     artifactName: artifact
-#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#   displayName: 'Publish npm artifact'
+#    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+#    includeRootFolder: false
+#    archiveType: 'zip'
+#    archiveFile: '$(Build.ArtifactStagingDirectory)/new'
+#    replaceExistingArchive: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    artifactName: newartifact
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Publish npm artifact'
 - task: UniversalPackages@0
   displayName: Publish a Universal Package
   inputs:
