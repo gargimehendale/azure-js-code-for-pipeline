@@ -35,15 +35,15 @@ steps:
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: |
       src/*
-    targetFolder: '$(Build.ArtifactStagingDirectory)/tar'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy project files'
 
 - task: ArchiveFiles@2
   inputs:
-   rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/tar/src'
+   rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/src'
    includeRootFolder: false
    archiveType: 'zip'
-   archiveFile: '$(Build.ArtifactStagingDirectory)/new'
+   archiveFile: '$(Build.ArtifactStagingDirectory)/tar/new'
    replaceExistingArchive: true
 
 # - task: ArchiveFiles@2
@@ -57,7 +57,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     artifactName: newartifact
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/new'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/tar'
   displayName: 'Publish npm artifact'
 - task: UniversalPackages@0
   displayName: Publish a Universal Package
