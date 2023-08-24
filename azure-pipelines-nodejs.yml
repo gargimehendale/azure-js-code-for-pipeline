@@ -30,9 +30,9 @@ steps:
 - task: ArchiveFiles@2
   inputs:
    rootFolderOrFile: '$(Build.SourcesDirectory)/src'
-   includeRootFolder: false
+   includeRootFolder: true
    archiveType: 'zip'
-   archiveFile: '$(Build.ArtifactStagingDirectory)/test'
+   archiveFile: '$(Build.ArtifactStagingDirectory)/test.zip'
    replaceExistingArchive: true
 
 # - task: PublishBuildArtifacts@1
