@@ -25,11 +25,16 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
+- script: |
+    echo "Working directory : $(pwd)"
+    echo "List of directory: $(ls -larth)"
+    echo "build sources directory: $(Build.SourcesDirectory)"
+    echo "Artifacts staging file: $(Build.ArtifactStagingDirectory)"
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
     contents: |
-       src/*
+      ./src/*
     targetFolder: '$(Build.ArtifactStagingDirectory)'
   displayName: 'Copy project files'
 # - task: ArchiveFiles@2
