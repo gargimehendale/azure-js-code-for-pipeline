@@ -46,7 +46,7 @@ steps:
   inputs:
     command: publish
     vstsFeedPublish: 'artifact-crete/test-artifact'
-    vstsFeedPackagePublish: 'saas-dev-$(Build.Repository.Name)'
+    vstsFeedPackagePublish: 'saas-dev-host-ui'
     versionOption: custom
     versionPublish: '$(major).$(minor).$(patch).$(Build.BuildNumber)'
     publishDirectory: '$(Build.ArtifactStagingDirectory)/tar'
