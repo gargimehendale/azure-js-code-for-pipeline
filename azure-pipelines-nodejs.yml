@@ -48,5 +48,5 @@ steps:
     vstsFeedPublish: 'artifact-crete/test-artifact'
     vstsFeedPackagePublish: 'saas-dev-host-ui'
     versionOption: custom
-    versionPublish: '$(major).$(minor).$(patch).$(Build.BuildNumber)'
+    versionPublish: '$(major).$(minor).$(patch)-$(Build.BuildNumber)'
     publishDirectory: '$(Build.ArtifactStagingDirectory)/tar'
