@@ -4,7 +4,7 @@ trigger:
 variables:
   major: 1
   minor: 0
-  brpatch: $[counter(variables['major.minor'], 0)]
+  patch: $[counter(variables['major.minor'], 0)]
 
 pool:
   vmImage: ubuntu-latest
@@ -35,17 +35,18 @@ steps:
    archiveFile: '$(Build.ArtifactStagingDirectory)/test.zip'
    replaceExistingArchive: true
 
-# - task: PublishBuildArtifacts@1
-#   inputs:
-#     artifactName: newartifact
-#     PathtoPublish: '$(Build.ArtifactStagingDirectory)/tar'
-#   displayName: 'Publish npm artifact'
+- task: PublishBuildArtifacts@1
+  inputs:
+    artifactName: 'saas-dev-$(Build.Repository.Name)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/tar'
+  displayName: 'Publish npm artifact'
+
 - task: UniversalPackages@0
   displayName: Publish a Universal Package
   inputs:
     command: publish
     vstsFeedPublish: 'artifact-crete/test-artifact'
-    vstsFeedPackagePublish: 'new'
+    vstsFeedPackagePublish: 'saas-dev-$(Build.Repository.Name)'
     versionOption: custom
-    versionPublish: '$(major).$(minor).$(brpatch)'
+    versionPublish: '$(major).$(minor).$(patch).$(Build.BuildNumber)'
     publishDirectory: '$(Build.ArtifactStagingDirectory)/'
