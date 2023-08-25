@@ -32,7 +32,7 @@ steps:
    rootFolderOrFile: '$(Build.SourcesDirectory)/src'
    includeRootFolder: true
    archiveType: 'zip'
-   archiveFile: '$(Build.ArtifactStagingDirectory)/test.zip'
+   archiveFile: '$(Build.ArtifactStagingDirectory)/tar/test.zip'
    replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
@@ -49,4 +49,4 @@ steps:
     vstsFeedPackagePublish: 'saas-dev-$(Build.Repository.Name)'
     versionOption: custom
     versionPublish: '$(major).$(minor).$(patch).$(Build.BuildNumber)'
-    publishDirectory: '$(Build.ArtifactStagingDirectory)/'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)/tar'
